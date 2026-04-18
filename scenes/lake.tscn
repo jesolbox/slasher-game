@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ssn3msetgq0n"]
+
+[node name="Lake" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.178711, 0)
+radius = 38.061523
+height = 8.357422
+sides = 14

@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://lb4wgm61t6vo"]
+
+[ext_resource type="Script" uid="uid://dxlkitd7hn78m" path="res://Scripts/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_3vyb7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2els"]
+albedo_color = Color(0.8392157, 0.6666667, 0.5529412, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qhqgy"]
+material = SubResource("StandardMaterial3D_g2els")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
+albedo_color = Color(0.05882353, 0.05882353, 0.05882353, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3vyb7"]
+material = SubResource("StandardMaterial3D_3vyb7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhqgy"]
+albedo_color = Color(0.24705882, 0.24705882, 0.24705882, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dqkch"]
+material = SubResource("StandardMaterial3D_qhqgy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlg0r"]
+albedo_color = Color(0.4, 0.3019608, 0.28235295, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tuyoq"]
+material = SubResource("StandardMaterial3D_qlg0r")
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_u8vuu")
+
+[node name="Mask" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.45, 0, 0, 0, 0.45, 0, 0, 0, 0.45, 0, 0.99921274, -0.36410323)
+mesh = SubResource("SphereMesh_3vyb7")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, -0.32786894)
+mesh = SubResource("SphereMesh_qhqgy")
+
+[node name="Torso" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.57, 0, 0, 0, 1, 0, 0.38953555, 0)
+mesh = SubResource("CapsuleMesh_3vyb7")
+
+[node name="Legs" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.57, 0, 0, 0, 0.75, 0, -0.42586046, 0)
+mesh = SubResource("CapsuleMesh_3vyb7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 1, 2)
+
+[node name="WeaponAnchor" type="Node3D" parent="."]
+transform = Transform3D(0.97507197, 0.22188894, -1.6531928e-09, -0.016887873, 0.07421236, 0.9970993, 0.22124529, -0.97224396, 0.07610959, 0.8786448, 0.28704345, 0.032735348)
+
+[node name="Axe" type="Node3D" parent="WeaponAnchor"]
+transform = Transform3D(0.99989694, 0.00045341253, 0.0143576525, 0.00045341253, 0.99800766, -0.06309345, -0.014357656, 0.06309347, 0.99790436, -0.14234126, 0.53211844, -0.042015582)
+
+[node name="Head" type="MeshInstance3D" parent="WeaponAnchor/Axe"]
+transform = Transform3D(0.08, 0, 0, 0, 0.25, 0, 0, 0, 0.5, 0, 0.55517495, -0.14818668)
+mesh = SubResource("BoxMesh_dqkch")
+
+[node name="Handle" type="MeshInstance3D" parent="WeaponAnchor/Axe"]
+transform = Transform3D(0.06, 0, 0, 0, 0.7, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = SubResource("CylinderMesh_tuyoq")
