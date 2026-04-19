@@ -1,6 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://lb4wgm61t6vo"]
+[gd_scene load_steps=15 format=3 uid="uid://lb4wgm61t6vo"]
 
 [ext_resource type="Script" uid="uid://dxlkitd7hn78m" path="res://Scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://0hsugvj2sxen" path="res://Scripts/player_state_machine.gd" id="2_dqkch"]
+[ext_resource type="Script" uid="uid://pmw8cakkvblc" path="res://Scripts/idle_state.gd" id="3_qlg0r"]
+[ext_resource type="Script" uid="uid://cm17s6jp0jqdw" path="res://Scripts/move_state.gd" id="4_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -32,6 +35,17 @@ material = SubResource("StandardMaterial3D_qlg0r")
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_3vyb7")
+walk_speed = null
+sprint_speed = null
+acceleration = null
+friction = null
+turn_speed = null
+mouse_sensitivity = null
+gravity = null
+windup_time = null
+attack_time = null
+recovery_time = null
+attack_range = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_u8vuu")
@@ -69,3 +83,15 @@ mesh = SubResource("BoxMesh_dqkch")
 [node name="Handle" type="MeshInstance3D" parent="WeaponAnchor/Axe"]
 transform = Transform3D(0.06, 0, 0, 0, 0.7, 0, 0, 0, 0.15, 0, 0, 0)
 mesh = SubResource("CylinderMesh_tuyoq")
+
+[node name="StateMachine" type="Node3D" parent="."]
+script = ExtResource("2_dqkch")
+
+[node name="Idle" type="Node3D" parent="StateMachine"]
+script = ExtResource("3_qlg0r")
+
+[node name="Move" type="Node3D" parent="StateMachine"]
+script = ExtResource("4_tuyoq")
+
+[node name="Attack" type="Node3D" parent="StateMachine"]
+script = ExtResource("3_qlg0r")
