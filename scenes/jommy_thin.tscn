@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmm6gec4c0a6r"]
+
+[ext_resource type="Script" uid="uid://cfvuwxrgu5wtv" path="res://Scripts/jommy_thin.gd" id="1_6i1ln"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm8n1"]
+albedo_color = Color(0.5568628, 0.8666667, 0.3529412, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6i1ln"]
+material = SubResource("StandardMaterial3D_tm8n1")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_snbhh"]
+
+[node name="JommyThin" type="CharacterBody3D"]
+script = ExtResource("1_6i1ln")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_6i1ln")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_snbhh")

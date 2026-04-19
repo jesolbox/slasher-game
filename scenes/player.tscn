@@ -74,9 +74,10 @@ mesh = SubResource("BoxMesh_dqkch")
 transform = Transform3D(0.06, 0, 0, 0, 0.7, 0, 0, 0, 0.15, 0, 0, 0)
 mesh = SubResource("CylinderMesh_tuyoq")
 
-[node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_dqkch")
 initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://0hsugvj2sxen"
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_qlg0r")

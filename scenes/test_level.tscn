@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxgybiq5u3khq"]
+[gd_scene load_steps=11 format=3 uid="uid://dxgybiq5u3khq"]
 
 [ext_resource type="PackedScene" uid="uid://lb4wgm61t6vo" path="res://scenes/player.tscn" id="1_2venv"]
 [ext_resource type="PackedScene" uid="uid://b1yusrsuw5oec" path="res://scenes/cabin_1.tscn" id="2_paw1w"]
+[ext_resource type="PackedScene" uid="uid://cmm6gec4c0a6r" path="res://scenes/jommy_thin.tscn" id="3_j6w7d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2venv"]
 albedo_color = Color(0.18039216, 0.43529412, 0.2509804, 1)
@@ -495,3 +496,6 @@ size = Vector3(8.978882, 2.3754272, 3.7491455)
 transform = Transform3D(0.8775264, 0, 0.19986846, 0, 0.9, 0, -0.19986846, 0, 0.8775264, -9.561874, 2.2510448, 6.138504)
 operation = 2
 size = Vector3(0.56658936, 2.1455994, 3.0952454)
+
+[node name="JommyThin" parent="." instance=ExtResource("3_j6w7d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.312038, 1.6232986, 20.566137)
