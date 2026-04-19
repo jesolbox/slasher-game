@@ -1,7 +1,7 @@
 extends PlayerState
 
 func physics_update(delta: float) -> void:
-	var move_dir := player.get_move_direction()
+	var move_dir :Vector3 = player.get_move_direction()
 
 	if move_dir.length() <= 0.01:
 		state_machine.change_state_by_name("idle")

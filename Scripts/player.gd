@@ -12,8 +12,8 @@ var camera: Camera3D
 var state_machine: PlayerStateMachine
 
 func _ready() -> void:
-	camera_pivot = $CameraPivot
-	camera = $CameraPivot/Camera3D
+	camera_pivot = $Head
+	camera = $Head/Camera3D
 	state_machine = $StateMachine
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 

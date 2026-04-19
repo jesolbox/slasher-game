@@ -8,9 +8,6 @@ func enter() -> void:
 	player.velocity.x = 0.0
 	player.velocity.z = 0.0
 
-	# Example:
-	# player.get_node("AnimationPlayer").play("axe_slash")
-
 func physics_update(delta: float) -> void:
 	timer -= delta
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://lb4wgm61t6vo"]
+[gd_scene load_steps=16 format=3 uid="uid://lb4wgm61t6vo"]
 
 [ext_resource type="Script" uid="uid://dxlkitd7hn78m" path="res://Scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://0hsugvj2sxen" path="res://Scripts/player_state_machine.gd" id="2_dqkch"]
-[ext_resource type="Script" uid="uid://pmw8cakkvblc" path="res://Scripts/idle_state.gd" id="3_qlg0r"]
-[ext_resource type="Script" uid="uid://cm17s6jp0jqdw" path="res://Scripts/move_state.gd" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://pmw8cakkvblc" path="res://Scripts/states/idle_state.gd" id="3_qlg0r"]
+[ext_resource type="Script" uid="uid://cm17s6jp0jqdw" path="res://Scripts/states/move_state.gd" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://v7e80mr2aspl" path="res://Scripts/states/attack_state.gd" id="5_fjrip"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 
@@ -35,17 +36,6 @@ material = SubResource("StandardMaterial3D_qlg0r")
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_3vyb7")
-walk_speed = null
-sprint_speed = null
-acceleration = null
-friction = null
-turn_speed = null
-mouse_sensitivity = null
-gravity = null
-windup_time = null
-attack_time = null
-recovery_time = null
-attack_range = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_u8vuu")
@@ -59,6 +49,9 @@ skeleton = NodePath("../CollisionShape3D")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1, -0.32786894)
 mesh = SubResource("SphereMesh_qhqgy")
 
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(2, 0, 0, 0, 1.7751164, 0.921391, 0, -0.921391, 1.7751164, 0, 0.5601971, 4.655738)
+
 [node name="Torso" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.57, 0, 0, 0, 1, 0, 0.38953555, 0)
 mesh = SubResource("CapsuleMesh_3vyb7")
@@ -66,9 +59,6 @@ mesh = SubResource("CapsuleMesh_3vyb7")
 [node name="Legs" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.75, 0, 0, 0, 0.57, 0, 0, 0, 0.75, 0, -0.42586046, 0)
 mesh = SubResource("CapsuleMesh_3vyb7")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 1, 2)
 
 [node name="WeaponAnchor" type="Node3D" parent="."]
 transform = Transform3D(0.97507197, 0.22188894, -1.6531928e-09, -0.016887873, 0.07421236, 0.9970993, 0.22124529, -0.97224396, 0.07610959, 0.8786448, 0.28704345, 0.032735348)
@@ -84,14 +74,18 @@ mesh = SubResource("BoxMesh_dqkch")
 transform = Transform3D(0.06, 0, 0, 0, 0.7, 0, 0, 0, 0.15, 0, 0, 0)
 mesh = SubResource("CylinderMesh_tuyoq")
 
-[node name="StateMachine" type="Node3D" parent="."]
+[node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("2_dqkch")
+initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node3D" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("3_qlg0r")
+metadata/_custom_type_script = "uid://cmdhiplv1f6i"
 
-[node name="Move" type="Node3D" parent="StateMachine"]
+[node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource("4_tuyoq")
+metadata/_custom_type_script = "uid://cmdhiplv1f6i"
 
-[node name="Attack" type="Node3D" parent="StateMachine"]
-script = ExtResource("3_qlg0r")
+[node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource("5_fjrip")
+metadata/_custom_type_script = "uid://cmdhiplv1f6i"
