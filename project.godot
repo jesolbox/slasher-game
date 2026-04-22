@@ -18,6 +18,13 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://entities/": "pink",
+"res://levels/": "green"
+}
+
 [input]
 
 move_forward={

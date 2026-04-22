@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmm6gec4c0a6r"]
 
-[ext_resource type="Script" uid="uid://cfvuwxrgu5wtv" path="res://Scripts/jommy_thin.gd" id="1_6i1ln"]
+[ext_resource type="Script" uid="uid://cfvuwxrgu5wtv" path="res://entities/characters/npcs/counselors/jommy_thin/jommy_thin.gd" id="1_6i1ln"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm8n1"]
 albedo_color = Color(0.5568628, 0.8666667, 0.3529412, 1)

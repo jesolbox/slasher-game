@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://lb4wgm61t6vo" path="res://scenes/player.tscn" id="1_2venv"]
 [ext_resource type="PackedScene" uid="uid://b1yusrsuw5oec" path="res://scenes/cabin_1.tscn" id="2_paw1w"]
-[ext_resource type="PackedScene" uid="uid://cmm6gec4c0a6r" path="res://scenes/jommy_thin.tscn" id="3_j6w7d"]
+[ext_resource type="PackedScene" uid="uid://cmm6gec4c0a6r" path="res://entities/characters/npcs/counselors/jommy_thin/jommy_thin.tscn" id="3_j6w7d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2venv"]
 albedo_color = Color(0.18039216, 0.43529412, 0.2509804, 1)
