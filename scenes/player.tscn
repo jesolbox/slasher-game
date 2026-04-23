@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://lb4wgm61t6vo"]
+[gd_scene load_steps=19 format=3 uid="uid://lb4wgm61t6vo"]
 
 [ext_resource type="Script" uid="uid://dxlkitd7hn78m" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://0hsugvj2sxen" path="res://scripts/player_state_machine.gd" id="2_dqkch"]
@@ -34,6 +34,66 @@ albedo_color = Color(0.4, 0.3019608, 0.28235295, 1)
 [sub_resource type="CylinderMesh" id="CylinderMesh_tuyoq"]
 material = SubResource("StandardMaterial3D_qlg0r")
 
+[sub_resource type="Animation" id="Animation_qlg0r"]
+resource_name = "axe_attack_light"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnchor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.2633915), Vector3(9.01777e-09, 1.1846248, -1.2633915), Vector3(-0.06539848, 2.9255884, -1.4251736)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponAnchor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8786448, 0.28704345, -0.9607568)]
+}
+
+[sub_resource type="Animation" id="Animation_tuyoq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WeaponAnchor:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, -1.2633915)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WeaponAnchor:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.8786448, 0.28704345, -0.9607568)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fjrip"]
+_data = {
+&"RESET": SubResource("Animation_tuyoq"),
+&"axe_attack_light": SubResource("Animation_qlg0r")
+}
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_3vyb7")
 
@@ -61,7 +121,7 @@ transform = Transform3D(0.75, 0, 0, 0, 0.57, 0, 0, 0, 0.75, 0, -0.42586046, 0)
 mesh = SubResource("CapsuleMesh_3vyb7")
 
 [node name="WeaponAnchor" type="Node3D" parent="."]
-transform = Transform3D(0.97507197, 0.22188894, -1.6531928e-09, -0.016887873, 0.07421236, 0.9970993, 0.22124529, -0.97224396, 0.07610959, 0.8786448, 0.28704345, 0.032735348)
+transform = Transform3D(0.3025861, 0.95312196, 0, -0.9531219, 0.3025861, 0, 0, 0, 1, 0.8786448, 0.28704345, -0.9607568)
 
 [node name="Axe" type="Node3D" parent="WeaponAnchor"]
 transform = Transform3D(0.99989694, 0.00045341253, 0.0143576525, 0.00045341253, 0.99800766, -0.06309345, -0.014357656, 0.06309347, 0.99790436, -0.14234126, 0.53211844, -0.042015582)
@@ -90,3 +150,8 @@ metadata/_custom_type_script = "uid://cmdhiplv1f6i"
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("5_fjrip")
 metadata/_custom_type_script = "uid://cmdhiplv1f6i"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fjrip")
+}
