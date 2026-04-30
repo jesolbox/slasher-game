@@ -4,6 +4,7 @@ extends PlayerState
 var timer := 0.0
 
 func enter() -> void:
+	print("ATTACK")
 	timer = attack_duration
 	player.velocity.x = 0.0
 	player.velocity.z = 0.0

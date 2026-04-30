@@ -1,7 +1,8 @@
 extends PlayerState
 
 func enter() -> void:
-	pass
+	player.play_anim("idle")
+	print("IDLE")
 
 func physics_update(delta: float) -> void:
 	var move_dir :Vector3 = player.get_move_direction()

@@ -10,6 +10,7 @@ var move_input := Vector2.ZERO
 var camera_pivot: Node3D
 var camera: Camera3D
 var state_machine: PlayerStateMachine
+var anim_player: AnimationPlayer
 
 func _ready() -> void:
 	camera_pivot = $Head
@@ -44,3 +45,14 @@ func get_move_direction() -> Vector3:
 
 	var dir := (transform.basis * input_dir).normalized()
 	return dir
+	
+func play_anim(anim_name: String) -> void:
+	if anim_player == null:
+		return
+		
+	if not anim_player.has_animation(anim_name):
+		push_warning("missing animation" + anim_name)
+		return
+	
+	if anim_player.current_animation != anim_name:
+		anim_player.play(anim_name)
